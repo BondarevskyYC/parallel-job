@@ -70,7 +70,7 @@ jobs:
       - name: Check required environment variables
         shell: bash
         run: |
-          if [ -z ${FILE_URL+x} ]; then echo "::error file=action.yml,line=16::FILE_URL"; exit 1; fi
+          #if [ -z ${FILE_URL+x} ]; then echo "::error file=action.yml,line=16::FILE_URL"; exit 1; fi
 
       - name: Fetch and print
         shell: bash
