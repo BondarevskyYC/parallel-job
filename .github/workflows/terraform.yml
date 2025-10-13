@@ -66,6 +66,21 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
+      
+      - name: Check required environment variables
+        shell: bash
+        run: |
+          if [ -z ${FILE_URL+x} ]; then echo "::error file=action.yml,line=16::FILE_URL"; exit 1; fi
+
+      - name: Fetch and print
+        shell: bash
+        run: |
+          echo -e "\u001b[36mStarting to fetch file\u001b[0m"
+          curl $FILE_URL --silent --output my.file
+          echo "::group::File Output"
+          cat my.file
+          echo "::endgroup::"
+          echo -e "\u001b[32m\xE2\x9C\x94\u001b[0m file successfully printed"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
