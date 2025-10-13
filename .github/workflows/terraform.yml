@@ -70,8 +70,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo -e "\033[34mThis is blue text.\033[0m"
+          echo -e "\033[31;1mThis is bold red text.\033[0m"
+          echo -e "\033[42mThis has a green background.\033[0m"
+    
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
